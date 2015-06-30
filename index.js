@@ -149,7 +149,11 @@ function getFiles (path, keepRoot, cb) {
 
     files.forEach(function (file) {
       file.getStream = getFilePathStream(file.path)
-      file.path = file.path.replace(path, '').split(corePath.sep)
+      //Changed by Jvinai
+      var newPath = file.path.split('webseed').pop();
+      file.path = newPath.split(corePath.sep)
+      //Original
+      //file.path = file.path.replace(path, '').split(corePath.sep)
     })
     cb(null, files)
   })
